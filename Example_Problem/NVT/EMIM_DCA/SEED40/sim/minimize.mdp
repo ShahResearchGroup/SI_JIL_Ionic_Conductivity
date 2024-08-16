@@ -1,0 +1,30 @@
+;	Input file
+;
+integrator          = steep 
+nsteps              = 1000000
+nstlog              = 1000 
+nstxout             = 1000
+;
+;	Energy minimizing stuff
+;
+emstep              =  0.01
+;
+; vdw cutoffi
+rvdw                = 1.3
+DispCorr            = EnerPres
+rlist               = 1.3
+;
+constraints         = h-bonds
+constraint-algorithm = LINCS
+lincs-order          = 4
+lincs-iter           = 2
+;
+; electrostatic stuff
+coulombtype = PME
+vdwtype     = PME
+rcoulomb    = 1.3
+fourierspacing = 0.15
+pme_order = 4
+ewald_rtol = 1.E-5
+;
+pbc = xyz

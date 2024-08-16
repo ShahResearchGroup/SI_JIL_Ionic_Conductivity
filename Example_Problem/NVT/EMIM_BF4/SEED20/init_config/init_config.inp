@@ -1,0 +1,22 @@
+#
+tolerance 2.5
+
+# The file type of input and output files is PDB
+
+filetype pdb
+# The name of the output file
+
+output init_config.pdb
+
+structure EMIM.pdb
+	number 500
+        seed 20
+	inside box 0. 0. 0. 50.5 50.5 50.5
+end structure
+
+structure BF4.pdb
+	number 500
+        seed 20
+	inside box 0. 0. 0. 50.5 50.5 50.5
+end structure
+

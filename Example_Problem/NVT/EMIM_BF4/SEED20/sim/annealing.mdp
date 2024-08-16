@@ -1,0 +1,48 @@
+;This file is for bulk [c4mim][Cl] system
+; Periodic annealing of the IL
+;
+; Run parameters
+integrator          = md   ; leap-frog integrator
+dt                  = 0.001    ; 1 fs
+nsteps              = 1500000  ; 1.5 ns
+;
+constraints         =  h-bonds
+constraint-algorithm = LINCS 
+; output control
+nstxout            = 1000   ; every ps
+nstvout            = 1000
+nstfout            = 1000
+nstenergy          = 1000
+; Neighbor searching
+nstlist            = 10     ; 10 fs
+ns_type            = grid
+rlist              = 1.3
+rcoulomb           = 1.3
+rvdw               = 1.3
+DispCorr           = EnerPres
+; Electrostatics
+coulombtype        = PME
+vdwtype            = PME
+pme_order          = 4
+fourierspacing     = 0.15
+; Temperature coupling 
+Tcoupl             = v-rescale 
+tc_grps            = system
+tau_t              = 1.0  ; time constant in ps
+ref_t              = 298.15 
+ld-seed            = 502150803
+; 
+
+annealing = single
+annealing_npoints = 6 
+annealing_time = 0 300 500 700 1000 1200   
+annealing_temp = 0 298.15 298.15 523 523 298.15   
+; generate velocity of
+;gen_vel           = yes 
+; PBC
+pbc               = xyz
+;
+nstcomm           = 1
+comm-mode         = linear
+comm-grps         = system 
+

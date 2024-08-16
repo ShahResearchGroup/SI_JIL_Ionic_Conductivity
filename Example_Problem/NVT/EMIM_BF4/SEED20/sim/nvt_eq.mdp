@@ -1,0 +1,45 @@
+; NVT Equilibration of the system
+;
+; Run parameters
+integrator          = md   ; leap-frog integrator
+dt                  = 0.001    ; in ps (1 fs)
+nsteps              = 30000000  ; 30 ns
+;
+constraints           =  h-bonds
+constraint-algorithm = LINCS
+continuation         = yes 
+
+; output control
+nstxout            = 1000000  ; saving trajectory every 1 ns
+nstvout            = 1000000  ; 
+nstfout            = 1000000; 
+nstenergy          = 1000000   ; 
+; Neighbor searching
+nstlist            = 10     ; 10 fs
+ns_type            = grid
+rlist              = 1.3
+rcoulomb           = 1.3
+rvdw               = 1.3
+DispCorr           = EnerPres
+; Electrostatics
+coulombtype        = PME
+vdwtype            = PME
+pme_order          = 4
+fourierspacing     = 0.15
+; Temperature coupling 
+Tcoupl             = Nose-Hoover 
+tc_grps            = System 
+tau_t              = 0.4  ; time constant in ps
+ref_t              = 298.15
+;
+;
+;gen_vel = yes
+;gen_temp = 298.15
+;gen_seed = 173529
+; 
+; PBC
+pbc               = xyz
+;
+nstcomm           = 1
+comm-mode         = linear
+comm-grps         = System

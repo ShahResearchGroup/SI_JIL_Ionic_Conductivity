@@ -1,0 +1,40 @@
+;
+; Run parameters
+integrator          = md   ; leap-frog integrator
+dt                  = 0.001    ; 1 fs
+nsteps              = 5000000  ; 5 ns
+;
+constraints           =  h-bonds
+constraint-algorithm = LINCS
+continuation         = yes 
+
+; output control
+nstxout            = 1000   ; every 1 ps
+nstvout            = 1000
+nstfout            = 1000
+nstenergy          = 1000   ; every ps
+; Neighbor searching
+nstlist            = 10     ; 20 fs
+ns_type            = grid
+rlist              = 1.3
+rcoulomb           = 1.3
+rvdw               = 1.3
+DispCorr           = EnerPres
+; Electrostatics
+coulombtype        = PME
+vdwtype            = PME
+pme_order          = 4
+fourierspacing     = 0.15
+; Temperature coupling 
+Tcoupl             = Berendsen 
+tc_grps            = System 
+tau_t              = 1.0  ; time constant in ps
+ref_t              = 313 
+;
+; PBC
+pbc               = xyz
+;
+nstcomm           = 1
+comm-mode         = linear
+comm-grps         = System 
+
